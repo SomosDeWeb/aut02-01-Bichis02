@@ -2,6 +2,7 @@ package gestorEstudiantes;
 
 public class Estudiante {
 	
+	// Versión limpia actualizada
 	// Atributos
 	private String nombre;
 	private int edad;
