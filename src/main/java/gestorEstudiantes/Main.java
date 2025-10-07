@@ -96,8 +96,25 @@ public class Main {
 	            continuar = sc.nextLine();
 	        } while (continuar.equalsIgnoreCase("si"));
 	        break;
+	        
+	        // Listar todos los estudiantes
+	        
+	    	case "2":
+	    		if (estudiantes.isEmpty()) {
+	    			System.out.println("\nNo hay estudiantes registrados.");
+	    		} else {
+	    			System.out.println("\n===Lista de estudiantes registrados.===");
+	    			
+	    			for (int i = 0; i < estudiantes.size(); i++) {
+	    				Estudiante alumno = estudiantes.get(i);
+	    				
+	    				System.out.println(alumno.mostrarDatos());
+	    			}
+	    		}
+	    	break;
 	      
 	    }
+	    
 	} while (!opcionMenu.equals("6"));
 	sc.close();
 	
