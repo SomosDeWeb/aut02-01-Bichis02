@@ -13,6 +13,7 @@ public class Main {
 	String continuar;
 	String nombre;
 	String respuesta;
+	String nombreBusqueda;
 	int edad;
 	double nota;
 	boolean matriculado = false;
@@ -113,6 +114,31 @@ public class Main {
 	    		}
 	    	break;
 	      
+	    	// Buscar un estudiante por su nombre
+	    	
+	    	case "3":
+	    		if (estudiantes.isEmpty()) {
+	    			System.out.println("\nNo hay estudiantes registrados.");
+	    		} else {
+	    			System.out.println("\nIntroduce el nombre del estudiante a buscar: ");
+	    			nombreBusqueda = sc.nextLine().trim();
+	    			
+	    			encontrado = false;
+	    			
+	    			for (Estudiante alumno : estudiantes) {
+	    				if (alumno.getNombre().equalsIgnoreCase(nombreBusqueda)) {
+	    					System.out.println("\nEstudiante encontrado:");
+	    					System.out.println(alumno.mostrarDatos());
+	    					encontrado = true;
+	    				}
+	    			}
+	    			
+	    			if (!encontrado) {
+	    				System.out.println("\nNo se encontró ningún estudiante con ese nombre.");
+	    			}
+	    		}
+	    		break;
+	    		
 	    }
 	    
 	} while (!opcionMenu.equals("6"));
