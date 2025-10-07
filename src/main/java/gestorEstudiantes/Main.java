@@ -18,8 +18,8 @@ public class Main {
 	double nota;
 	boolean matriculado = false;
 	boolean encontrado;
-	double sumaNotas;
-	double media;
+	double sumaNotasTotal;
+	double mediaNotas;
 	 
 	
 	do {
@@ -136,6 +136,22 @@ public class Main {
 	    			if (!encontrado) {
 	    				System.out.println("\nNo se encontró ningún estudiante con ese nombre.");
 	    			}
+	    		}
+	    		break;
+	    		
+	    	// Calcular la media de todas las notas
+	    		
+	    	case "4":
+	    		if (estudiantes.size() == 0) {
+	    			System.out.println("\nNo hay estudiantes registrados para calcular la media.");
+	    		} else {
+	    			sumaNotasTotal = 0;
+	    			for (Estudiante alumno : estudiantes) {
+	    				sumaNotasTotal += alumno.getNota();
+	    			}
+	    			mediaNotas = sumaNotasTotal / estudiantes.size();
+	    			
+	    			System.out.println("\nLa media de todas las notas es: " + String.format("%.2f", mediaNotas));
 	    		}
 	    		break;
 	    		
