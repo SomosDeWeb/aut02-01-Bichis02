@@ -104,7 +104,7 @@ public class Main {
 	    		if (estudiantes.isEmpty()) {
 	    			System.out.println("\nNo hay estudiantes registrados.");
 	    		} else {
-	    			System.out.println("\n===Lista de estudiantes registrados.===");
+	    			System.out.println("\nLista de estudiantes registrados.");
 	    			
 	    			for (int i = 0; i < estudiantes.size(); i++) {
 	    				Estudiante alumno = estudiantes.get(i);
