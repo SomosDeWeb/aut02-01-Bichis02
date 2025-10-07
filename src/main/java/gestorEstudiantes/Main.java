@@ -1,4 +1,5 @@
 package gestorEstudiantes;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,6 +10,16 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 
 	String opcionMenu;
+	String continuar;
+	String nombre;
+	String respuesta;
+	int edad;
+	double nota;
+	boolean matriculado = false;
+	boolean encontrado;
+	double sumaNotas;
+	double media;
+	 
 	
 	do {
 	    System.out.println("\n--- Menú ---");
@@ -24,24 +35,62 @@ public class Main {
 	    
 	    switch (opcionMenu) {
 	    case "1":
-	        String continuar;
 	        do {
-	            System.out.print("Introduce el nombre del estudiante: ");
-	            String nombre = sc.nextLine();
-
-	            System.out.print("Introduce la edad del estudiante: ");
-	            int edad = Integer.parseInt(sc.nextLine());
-
-	            System.out.print("Introduce la nota del estudiante: ");
-	            double nota = Double.parseDouble(sc.nextLine());
-
-	            System.out.print("¿Está matriculado? (true/false): ");
-	            boolean matriculado = Boolean.parseBoolean(sc.nextLine());
+	        	// Nombre
+	        	do { 
+	        		 System.out.print("Introduce el nombre del estudiante: ");
+	 	             nombre = sc.nextLine().trim();
+	 	             if (nombre.isEmpty() || !nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+	 	            	 System.out.println("El nombre no puede estar vacío y debe contener solo letras.");
+	 	             }
+	        	} while (nombre.isEmpty() || !nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+"));
+	           
+	        	// Edad 
+	        	do {
+	        		System.out.print("Introduce la edad del estudiante: ");
+	        		try {
+	        			edad = Integer.parseInt(sc.nextLine());
+	        		} catch (NumberFormatException e) {
+	        			edad = -1;
+	        		}
+	        		if (edad < 0 || edad > 110) {
+	        				System.out.println("Edad inválida. Debe estar entre 0 y 110.");
+	        			}
+	        		} while (edad < 0 || edad > 110);
+	        		
+	        	// Nota
+	        	do {
+	        		 System.out.print("Introduce la nota del estudiante (Por favor, en el caso de tener decimales usad punto.): ");
+	        		 
+	        		 try {
+	        			 nota = Double.parseDouble(sc.nextLine());
+	        		 } catch (NumberFormatException e ) {
+	        			 nota = -1;
+	        		 }
+	        		 if (nota < 0 || nota > 10) {
+	        			 System.out.println("Nota inválida. Debe estar entre 0 y 10.");
+	        		 }
+	        		} while (nota < 0 || nota > 10);
+	        	
+	        	// Verificar si está matriculado
+	        	
+	        	do {
+	        		System.out.println("¿Está matriculado? (sí/no)");
+	        		respuesta = sc.nextLine().trim().toLowerCase();
+	        		if (respuesta.equals("si")) {
+	        			matriculado = true;
+	        		} else if (respuesta.equals("no")) {
+	        			matriculado = false;
+	        		} else {
+	        			System.out.println("Entrada inválida. Escríbe 'si' o 'no'.");
+	        		}
+	        	} while (!respuesta.equals("si") && !respuesta.equals("no"));
 
 	            // Crear estudiante y añadir a la lista
 	            Estudiante nuevo = new Estudiante(nombre, edad, nota, matriculado);
 	            estudiantes.add(nuevo);
-
+	            System.out.println("Estudiante añadido.");
+	            
 	            System.out.print("¿Quieres añadir otro estudiante? (si/no): ");
 	            continuar = sc.nextLine();
 	        } while (continuar.equalsIgnoreCase("si"));
