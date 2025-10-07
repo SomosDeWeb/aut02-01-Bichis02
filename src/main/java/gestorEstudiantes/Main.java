@@ -34,6 +34,7 @@ public class Main {
 	    opcionMenu = sc.nextLine();
 	    
 	    switch (opcionMenu) {
+	    // Añadir estudiante
 	    case "1":
 	        do {
 	        	// Nombre
