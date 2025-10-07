@@ -155,6 +155,24 @@ public class Main {
 	    		}
 	    		break;
 	    		
+	    	// Mostrar al estudiante con la mejor calificación
+	    		
+	    	case "5":
+	    		if (estudiantes.isEmpty()) {
+	    			System.out.println("\nNo hay estudiantes registrados en la lista.");
+	    		} else {
+	    			Estudiante mejorEstudiante = estudiantes.get(0);
+	    			for (Estudiante alumno : estudiantes) {
+	    				if (alumno.getNota() > mejorEstudiante.getNota()) {
+	    					mejorEstudiante = alumno;
+	    				}
+	    			}
+	    			
+	    			System.out.println("\nEstudiante con la mejor calificación");
+	    			System.out.println(mejorEstudiante.mostrarDatos());
+	    		}
+	    		break;
+	    		
 	    }
 	    
 	} while (!opcionMenu.equals("6"));
