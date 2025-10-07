@@ -173,6 +173,9 @@ public class Main {
 	    		}
 	    		break;
 	    		
+	    	case "6":
+	    		System.out.println("Saliendo del programa... ¡Hasta pronto <3!");
+	    		break;
 	    }
 	    
 	} while (!opcionMenu.equals("6"));
